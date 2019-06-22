@@ -9,7 +9,9 @@ export function greetingReducer(
   action: GreetingActionTypes): Greeting {
     switch (action.type) {
       case ADD_GREETING:
-        return action.payload;
+        return {
+          greeting: action.payload.greeting,
+        };
       default:
         return state;
     }

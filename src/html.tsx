@@ -1,23 +1,33 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
+import { StaticRouter } from 'react-router-dom';
 
 import App from './App';
 import { addGreeting } from './redux/actions/greeting';
 import { configureStore } from './redux/store';
 
-const store = configureStore();
-store.dispatch(addGreeting('Hello from server!'));
+export default (req: any) => {
+  const store = configureStore();
+  store.dispatch(addGreeting('Hello from server!'));
 
-const html = ReactDOMServer.renderToString(
-  <Provider store={store}>
-    <App />
-  </Provider>
-);
+  const routerContext = {};
 
-const preloadedState = JSON.stringify(store.getState());
+  const html = ReactDOMServer.renderToString(
+    <Provider store={store}>
+      <StaticRouter
+        location={req.baseUrl}
+        context={routerContext}
+      >
+        <App />
+      </StaticRouter>
+    </Provider>
+  );
 
-export default {
-  html,
-  preloadedState,
-};
+  const preloadedState = JSON.stringify(store.getState());
+
+  return {
+    html,
+    preloadedState,
+  };
+}
