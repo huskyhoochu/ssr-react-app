@@ -1,0 +1,3 @@
+[submodule "ssr-server"]
+	path = ssr-server
+	url = https://github.com/huskyhoochu/ssr-server.git
