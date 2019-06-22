@@ -11,19 +11,23 @@ create-react-app 을 이용해 서버 사이드 렌더링을 구현한 저장소
 프론트 및 서버 모듈 각각 `yarn` 설치 및 TypeScript 컴파일을 해주셔야 합니다.
 
 ```
+// ssr-server 저장소 설치
+$ git submodule update --init
+
+// 프론트 저장소 node_modules 설치
 $ yarn install
 
-(서버 폴더로 이동)
+// 서버 폴더로 이동 및 준비
 $ cd ssr-server
 $ yarn install && yarn build
 
-(루트 디렉터리로 이동)
+// 루트 디렉터리로 이동
 $ cd ..
 
-(client-side rendering)
+// client-side rendering
 $ yarn build && yarn client
 
-(server-side rendering)
+// server-side rendering
 $ yarn prod && yarn server 
 ```
 
