@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import { Helmet } from 'react-helmet';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 
@@ -24,9 +25,11 @@ export default (req: any) => {
     </Provider>
   );
 
+  const helmet = Helmet.renderStatic();
   const preloadedState = JSON.stringify(store.getState());
 
   return {
+    helmet,
     html,
     preloadedState,
   };

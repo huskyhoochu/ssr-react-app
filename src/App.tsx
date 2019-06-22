@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Switch, Route, Link } from "react-router-dom";
 import { AppState } from "./redux/reducer";
 import { Greeting } from "./redux/types/greeting";
+import { About, Home } from './pages';
 
 import logo from "./assets/logo.svg";
 import "./styles/App.css";
@@ -10,9 +11,6 @@ import "./styles/App.css";
 interface Props {
   greeting: Greeting["greeting"];
 }
-
-const Home: React.FC = () => <div>This is Home page.</div>;
-const About: React.FC = () => <div>Welcome About page!</div>;
 
 const App: React.FC<Props> = ({ greeting }) => {
   return (
