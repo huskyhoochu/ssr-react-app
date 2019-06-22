@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Switch, Route, Link } from "react-router-dom";
 import { AppState } from "./redux/reducer";
 import { Greeting } from "./redux/types/greeting";
-import { About, Home } from './pages';
+import Loadable from './loadable';
 
 import logo from "./assets/logo.svg";
 import "./styles/App.css";
@@ -28,8 +28,8 @@ const App: React.FC<Props> = ({ greeting }) => {
         </div>
         <div className="App-section">
           <Switch>
-            <Route path="/about" component={About} />
-            <Route path="/" exact={true} component={Home} />
+            <Route path="/about" component={Loadable.About} />
+            <Route path="/" exact={true} component={Loadable.Home} />
           </Switch>
         </div>
       </header>

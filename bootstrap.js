@@ -1,4 +1,5 @@
 const path = require('path');
+const Loadable = require('react-loadable');
 const register = require('ignore-styles').default;
 const assetManifest = require('./build/asset-manifest.json');
 
@@ -22,6 +23,8 @@ const html = require('./app_compiled/html').default;
 const buildPath = path.resolve(__dirname, 'build');
 const htmlPath = path.resolve(buildPath, 'index.html');
 
-listener(html, { buildPath, htmlPath }).listen(5000, () => {
-  console.log('server listening on http://localhost:5000 ...');
+Loadable.preloadAll().then(() => {
+  listener(html, { buildPath, htmlPath }).listen(5000, () => {
+    console.log('server listening on http://localhost:5000 ...');
+  });
 });
